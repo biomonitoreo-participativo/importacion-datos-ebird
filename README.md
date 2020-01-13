@@ -25,5 +25,5 @@ $ ogr2ogr cr_grid_4kx4k_spp_wgs84.shp cr_grid_4kx4k_wgs84.shp -dialect sqlite -s
 ### Cuadrículas proporcionadas por Sinac
 Conversión a WGS84
 ```terminal
-$ ogr2ogr -t_srs Cuadricula4x4_nacional_WGS84.shp Cuadricula4x4_nacional.shp
+$ ogr2ogr -t_srs EPSG:4326 Cuadricula4x4_nacional_WGS84.shp Cuadricula4x4_nacional.shp
 ```
