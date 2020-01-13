@@ -3,6 +3,7 @@
 * Jupyter Notebook para visualización de los datos de eBird en un archivo CSV: [visualizacion-datos-ebird.ipynb](https://github.com/biomonitoreo-participativo/procesamiento-datos-ebird/blob/master/visualizacion-datos-ebird.ipynb)
 
 ## Generación de cuadrículas de riqueza de especies
+### Cuadrículas generadas a partir de la división político administrativa del IGN en el SNIT
 Descarga de la capa de provincias
 ```terminal
 # WGS84
@@ -19,4 +20,10 @@ $ ogr2ogr cr_grid_8kx8k_spp_wgs84.shp cr_grid_8kx8k_wgs84.shp -dialect sqlite -s
 
 # 8 x 8 km2
 $ ogr2ogr cr_grid_4kx4k_spp_wgs84.shp cr_grid_4kx4k_wgs84.shp -dialect sqlite -sql "SELECT g4.geometry, Count(DISTINCT sciname) AS spp FROM cr_grid_4kx4k_wgs84 g4 LEFT JOIN 'observaciones_wgs84.shp'.observaciones_wgs84 o ON ST_CONTAINS(g4.geometry, o.geometry) GROUP BY g4.geometry"
+```
+
+### Cuadrículas proporcionadas por Sinac
+Conversión a WGS84
+```terminal
+$ ogr2ogr -t_srs Cuadricula4x4_nacional_WGS84.shp Cuadricula4x4_nacional.shp
 ```
